@@ -1,0 +1,30 @@
+{
+  "version": "0.1.0-*",
+  "title": "Automatonic.JsonApi",
+  "description": "Type support for JSON API by extending JSON.NET",
+  "language": "en-US",
+  "authors": [ "Elliott B. Edwards" ],
+  "packOptions": {
+    "projectUrl": "https://www.github.com/automatonic/json-api",
+    "tags": [ "json" ],
+    "licenseUrl": "https://raw.github.com/automatonic/json-api/master/LICENSE.md",
+    "repository": {
+      "type": "git",
+      "url": "git://github.com/automatonic/json-api"
+    }
+  },
+  "buildOptions": {
+    "outputName": "Automatonic.JsonApi",
+    "debugType": "portable"
+  },
+  "dependencies": {
+    "Newtonsoft.Json": "9.0.1"
+  },
+  "frameworks": {
+    "netstandard1.0": {
+      "dependencies": {
+        "NETStandard.Library": "1.0.0"
+      }
+    }
+  }
+}
