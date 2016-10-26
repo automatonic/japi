@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 
-namespace Automatonic.JsonApi
+namespace JApi
 {
     public class JError : JObject
     {

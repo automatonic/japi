@@ -1,6 +1,6 @@
 {
   "version": "0.1.0-*",
-  "title": "Automatonic.JsonApi",
+  "title": "JApi",
   "description": "Type support for JSON API by extending JSON.NET",
   "language": "en-US",
   "authors": [ "Elliott B. Edwards" ],
@@ -14,7 +14,7 @@
     }
   },
   "buildOptions": {
-    "outputName": "Automatonic.JsonApi",
+    "outputName": "JApi",
     "debugType": "portable"
   },
   "dependencies": {
