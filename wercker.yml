@@ -12,7 +12,7 @@ build:
     - script:
         name: dotnet pack 
         code: |
-          dotnet pack /pipeline/source/test/JApi/project.json -c Release
+          dotnet pack /pipeline/source/src/JApi/project.json -c Release
 push:
   - script:
         name: nuget push
