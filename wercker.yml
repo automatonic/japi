@@ -1,12 +1,10 @@
 box: microsoft/dotnet
-restore:
+build:
   steps:
     - script:
         name: dotnet restore
         code: |
-          dotnet restore
-build:
-  steps:
+          dotnet restore /pipeline/source/src/JApi/project.json
     - script:
         name: dotnet build 
         code: |
@@ -14,6 +12,10 @@ build:
 
 test:
   steps:
+    - script:
+        name: dotnet restore
+        code: |
+          dotnet restore /pipeline/source/test/JApi.Should/project.json
     - script:
         name: dotnet test 
         code: |
