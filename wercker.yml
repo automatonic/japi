@@ -13,8 +13,10 @@ build:
         name: dotnet pack 
         code: |
           dotnet pack /pipeline/source/src/JApi/project.json -c Release
+          
 push:
-  - script:
+  steps:
+    - script:
         name: nuget push
         code: |
           mono nuget push --help
