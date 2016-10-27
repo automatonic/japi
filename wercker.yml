@@ -9,4 +9,4 @@ build:
     - script:
         name: dotnet test
         code: |
-          dotnet test test/japi.should/project.json
+          dotnet test /pipeline/source/test/JApi.Should/project.json
