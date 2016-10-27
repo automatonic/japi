@@ -20,16 +20,13 @@ test:
         name: dotnet test 
         code: |
           dotnet test /pipeline/source/test/JApi.Should/project.json -c Release
-
-pack:
+      
+push:
   steps:
     - script:
         name: dotnet pack 
         code: |
           dotnet pack /pipeline/source/test/JApi.Should/project.json -c Release
-          
-push:
-  steps:
     - script:
         name: nuget push
         code: |
