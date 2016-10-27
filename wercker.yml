@@ -1,4 +1,4 @@
-box: microsoft/dotnet
+box: microsoft/dotnet:1.0.0-preview2.1-sdk
 build:
   steps:
     - script:
