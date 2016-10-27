@@ -1,17 +1,34 @@
 box: microsoft/dotnet
-build:
+restore:
   steps:
     - script:
         name: dotnet restore
         code: |
           dotnet restore
+build:
+  steps:
+    - script:
+        name: dotnet build 
+        code: |
+          dotnet build /pipeline/source/src/JApi/project.json -c Release
 
+test:
+  steps:
     - script:
         name: dotnet test 
         code: |
           dotnet test /pipeline/source/test/JApi.Should/project.json -c Release
 
+pack:
+  steps:
     - script:
-        name: dotnet build 
+        name: dotnet pack 
         code: |
-          dotnet test /pipeline/source/src/JApi/project.json -c Release
+          dotnet pack /pipeline/source/test/JApi.Should/project.json -c Release
+          
+push:
+  steps:
+    - script:
+        name: nuget push
+        code: |
+          mono nuget push --help
