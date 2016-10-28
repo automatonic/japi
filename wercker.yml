@@ -19,4 +19,5 @@ push:
     - script:
         name: nuget push
         code: |
-          mono nuget push --help
+          dotnet /cache/nuget/packages/NuGet.CommandLine.XPlat/3.5.0-rc1-final/lib/netcoreapp1.0/NuGet.Co
+mmandLine.XPlat.dll

@@ -17,6 +17,9 @@
     "outputName": "JApi",
     "debugType": "portable"
   },
+  "tools": {
+    "NuGet.CommandLine.XPlat":  "3.5.0-rc1-final"
+  },
   "dependencies": {
     "Newtonsoft.Json": "9.0.1"
   },
