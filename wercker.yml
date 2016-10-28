@@ -16,7 +16,11 @@ build:
           
 push:
   steps:
+    - script: 
+        name: runtimeconfig for nuget
+        code: |
+          printf "{\"runtimeOptions\":{\"framework\":{\"name\": \"Microsoft.NETCore.App\",\"version\": \"1.0.0\"}}}" > /usr/share/dotnet/sdk/$DOTNET_SDK_VERSION/NuGet.CommandLine.XPlat.runtimeconfig.json
     - script:
         name: nuget push
         code: |
-          dotnet /cache/nuget/packages/NuGet.CommandLine.XPlat/3.5.0-rc1-final/lib/netcoreapp1.0/NuGet.CommandLine.XPlat.dll
+          dotnet /usr/share/dotnet/sdk/$DOTNET_SDK_VERSION/NuGet.CommandLine.XPlat.dll
