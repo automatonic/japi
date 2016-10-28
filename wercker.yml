@@ -19,5 +19,4 @@ push:
     - script:
         name: nuget push
         code: |
-          dotnet /cache/nuget/packages/NuGet.CommandLine.XPlat/3.5.0-rc1-final/lib/netcoreapp1.0/NuGet.Co
-mmandLine.XPlat.dll
+          dotnet /cache/nuget/packages/NuGet.CommandLine.XPlat/3.5.0-rc1-final/lib/netcoreapp1.0/NuGet.CommandLine.XPlat.dll
