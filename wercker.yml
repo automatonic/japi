@@ -17,10 +17,10 @@ build:
 push:
   steps:
     - script: 
-        name: runtimeconfig for nuget
+        name: add runtimeconfig for nuget xplat
         code: |
           printf "{\"runtimeOptions\":{\"framework\":{\"name\": \"Microsoft.NETCore.App\",\"version\": \"1.0.0\"}}}" > /usr/share/dotnet/sdk/$DOTNET_SDK_VERSION/NuGet.CommandLine.XPlat.runtimeconfig.json
     - script:
         name: nuget push
         code: |
-          dotnet /usr/share/dotnet/sdk/$DOTNET_SDK_VERSION/NuGet.CommandLine.XPlat.dll push /pipeline/source/src/JApi/bin/Release/JApi.0.1.0.nupkg
+          dotnet /usr/share/dotnet/sdk/$DOTNET_SDK_VERSION/NuGet.CommandLine.XPlat.dll push /pipeline/source/src/JApi/bin/Release/JApi.0.1.0.nupkg $NUGET_API_KEY -Source https://www.nuget.org/api/v2/package 
