@@ -23,4 +23,4 @@ push:
     - script:
         name: nuget push
         code: |
-          dotnet /usr/share/dotnet/sdk/$DOTNET_SDK_VERSION/NuGet.CommandLine.XPlat.dll
+          dotnet /usr/share/dotnet/sdk/$DOTNET_SDK_VERSION/NuGet.CommandLine.XPlat.dll push /pipeline/source/src/JApi/bin/Release/JApi.0.1.0.nupkg
