@@ -18,6 +18,6 @@ build:
 push:
   steps:
     - script:
-        name: nuget push "$NUGET_API_KEY"
+        name: nuget push
         code: |
           nuget3 push JApi.$(cat project.json | jq --raw-output '.version').nupkg -k $NUGET_API_KEY -s https://www.nuget.org/api/v2/package
