@@ -1,24 +1,22 @@
 {
   "version": "0.1.0",
   "title": "JApi",
-  "description": "Type support for JSON API by extending JSON.NET",
+  "description": "JSON.NET extensions for supporting JSON API (http://jsonapi.org/)",
   "language": "en-US",
-  "authors": [ "Elliott B. Edwards" ],
+  "authors": [ "Elliott B. Edwards (automatonic)" ],
   "packOptions": {
-    "projectUrl": "https://www.github.com/automatonic/json-api",
-    "tags": [ "json" ],
-    "licenseUrl": "https://raw.github.com/automatonic/json-api/master/LICENSE.md",
+    "projectUrl": "https://www.github.com/automatonic/japi",
+    "tags": [ "json", "json-api", "rest" ],
+    "iconUrl": "http://www.gravatar.com/avatar/772743edd14cb0bd749c2a08bccad4c5.png?s=256",
+    "licenseUrl": "https://raw.github.com/automatonic/japi/master/LICENSE.md",
     "repository": {
       "type": "git",
-      "url": "git://github.com/automatonic/json-api"
+      "url": "git://github.com/automatonic/japi"
     }
   },
   "buildOptions": {
     "outputName": "JApi",
     "debugType": "portable"
-  },
-  "tools": {
-    "NuGet.CommandLine.XPlat":  "3.5.0-rc1-final"
   },
   "dependencies": {
     "Newtonsoft.Json": "9.0.1"
