@@ -12,7 +12,7 @@ build:
     - script:
         name: dotnet pack 
         code: |
-          dotnet pack /pipeline/source/src/JApi/project.json -c Release -output $WERCKER_OUTPUT_DIR
+          dotnet pack /pipeline/source/src/JApi/project.json -c Release -o $WERCKER_OUTPUT_DIR
           mv /pipeline/source/src/JApi/project.json $WERCKER_OUTPUT_DIR/project.json
           
 push:
