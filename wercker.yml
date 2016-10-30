@@ -19,4 +19,4 @@ push:
     - script:
         name: nuget push
         code: |
-          dotnet /usr/share/dotnet/sdk/$DOTNET_SDK_VERSION/NuGet.CommandLine.XPlat.dll push /pipeline/source/src/JApi/bin/Release/JApi.$(cat /pipeline/source/src/JApi/project.json | jq --raw-output '.version').nupkg $NUGET_API_KEY -s https://www.nuget.org/api/v2/package
+          dotnet /usr/share/dotnet/sdk/$DOTNET_SDK_VERSION/NuGet.CommandLine.XPlat.dll push /pipeline/source/src/JApi/bin/Release/JApi.$(cat /pipeline/source/src/JApi/project.json | jq --raw-output '.version').nupkg [$NUGET_API_KEY] -s https://www.nuget.org/api/v2/package
