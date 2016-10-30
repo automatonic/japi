@@ -20,4 +20,4 @@ push:
     - script:
         name: nuget push "$NUGET_API_KEY"
         code: |
-          nuget3 push /pipeline/output/JApi.$(cat /pipeline/output/project.json | jq --raw-output '.version').nupkg $NUGET_API_KEY -s https://www.nuget.org/api/v2/package
+          nuget3 push JApi.$(cat project.json | jq --raw-output '.version').nupkg $NUGET_API_KEY -s https://www.nuget.org/api/v2/package
