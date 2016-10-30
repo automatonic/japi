@@ -27,5 +27,8 @@
         "NETStandard.Library": "1.0.0"
       }
     }
+  },
+  "tooling": {
+    "defaultNamespace": "JApi"
   }
 }

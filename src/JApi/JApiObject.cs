@@ -9,6 +9,11 @@ namespace JApi
     /// </summary>
     public class JApiObject : JObject
     {
+        /// <summary>
+        /// Creates a new JSON API Object
+        /// </summary>
+        /// <param name="version">an optional version string</param>
+        /// <param name="meta">an optional meta object</param>
         public JApiObject(string version = null, JObject meta = null)
             : base(content: Content(version: version, meta: meta).ToArray())
         {

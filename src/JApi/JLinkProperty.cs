@@ -39,27 +39,27 @@ namespace JApi
             string next,
             params JLinkProperty[] links) 
         {   
-            if (string.IsNullOrWhiteSpace(self))
+            if (!string.IsNullOrWhiteSpace(self))
             {
                 yield return new JLinkProperty(nameof(self), self);
             }
-            if (string.IsNullOrWhiteSpace(related))
+            if (!string.IsNullOrWhiteSpace(related))
             {
                 yield return new JLinkProperty(nameof(related), related);
             }
-            if (string.IsNullOrWhiteSpace(first))
+            if (!string.IsNullOrWhiteSpace(first))
             {
                 yield return new JLinkProperty(nameof(first), first);
             }
-            if (string.IsNullOrWhiteSpace(last))
+            if (!string.IsNullOrWhiteSpace(last))
             {
                 yield return new JLinkProperty(nameof(last), last);
             }
-            if (string.IsNullOrWhiteSpace(prev))
+            if (!string.IsNullOrWhiteSpace(prev))
             {
                 yield return new JLinkProperty(nameof(prev), prev);
             }
-            if (string.IsNullOrWhiteSpace(next))
+            if (!string.IsNullOrWhiteSpace(next))
             {
                 yield return new JLinkProperty(nameof(next), next);
             }

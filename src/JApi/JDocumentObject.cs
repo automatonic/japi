@@ -35,7 +35,7 @@ namespace JApi
             string next = null,
             JLinkProperty[] links = null,
             JResourceObject[] included = null) : base(
-                ToContent(
+                Content(
                     data: data, 
                     meta: meta, 
                     jsonapi: jsonapi, 
@@ -75,7 +75,7 @@ namespace JApi
             string next = null,
             JLinkProperty[] links = null,
             JResourceObject[] included = null) : base(
-                ToContent(
+                Content(
                     data: data, 
                     meta: meta, 
                     jsonapi: jsonapi, 
@@ -86,7 +86,8 @@ namespace JApi
                     prev: prev,
                     next: next,
                     links: links, 
-                    included: included)) {}
+                    included: included)
+                .ToArray()) {}
 
         /// <summary>
         /// Creates a JSON API document that represents one or more errors
@@ -113,7 +114,7 @@ namespace JApi
             string prev = null,
             string next = null,
             JLinkProperty[] links = null) : base(
-                ToContent(
+                Content(
                     data: data, 
                     meta: meta, 
                     jsonapi: jsonapi, 
@@ -124,7 +125,8 @@ namespace JApi
                     prev: prev,
                     next: next,
                     links: links, 
-                    included: null)) {}
+                    included: null)
+                .ToArray()) {}
 
 
         /// <summary>
@@ -142,7 +144,7 @@ namespace JApi
         /// <param name="links">additional custom links</param>
         /// <param name="included">an array of resource objects that are related to the primary data and/or each other</param>
         /// <returns>The JObject content</returns>
-        public static IEnumerable<object> ToContent(
+        public static IEnumerable<object> Content(
             object data, 
             JObject meta,
             JApiObject jsonapi,
@@ -155,10 +157,7 @@ namespace JApi
             JLinkProperty[] links,
             JResourceObject[] included) 
         {
-            if (data != null)
-            {
-                yield return new JProperty(nameof(data), data);
-            }
+            yield return new JProperty(nameof(data), data);
             if (meta != null)
             {
                 yield return new JProperty(nameof(meta), meta);
