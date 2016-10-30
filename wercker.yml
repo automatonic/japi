@@ -1,4 +1,4 @@
-box: microsoft/dotnet
+box: automatonic/dotnet
 build:
   steps:
     - script:
@@ -13,14 +13,11 @@ build:
         name: dotnet pack 
         code: |
           dotnet pack /pipeline/source/src/JApi/project.json -c Release
+          JAPI_VERSION="$(/pipeline/source/src/JApi/project.json | jq --raw-output '.version'')"
           
 push:
   steps:
-    - script: 
-        name: add runtimeconfig for nuget xplat
-        code: |
-          printf "{\"runtimeOptions\":{\"framework\":{\"name\": \"Microsoft.NETCore.App\",\"version\": \"1.0.0\"}}}" > /usr/share/dotnet/sdk/$DOTNET_SDK_VERSION/NuGet.CommandLine.XPlat.runtimeconfig.json
     - script:
         name: nuget push
         code: |
-          dotnet /usr/share/dotnet/sdk/$DOTNET_SDK_VERSION/NuGet.CommandLine.XPlat.dll push /pipeline/source/src/JApi/bin/Release/JApi.0.1.0.nupkg $NUGET_API_KEY -Source https://www.nuget.org/api/v2/package 
+          dotnet /usr/share/dotnet/sdk/$DOTNET_SDK_VERSION/NuGet.CommandLine.XPlat.dll push /pipeline/source/src/JApi/bin/Release/JApi.$JAPI_VERSION.nupkg $NUGET_API_KEY -s https://www.nuget.org/api/v2/package

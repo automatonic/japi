@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0-*",
+  "version": "0.1.0",
   "title": "JApi",
   "description": "Type support for JSON API by extending JSON.NET",
   "language": "en-US",
