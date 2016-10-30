@@ -13,7 +13,7 @@ build:
         name: dotnet pack 
         code: |
           dotnet pack /pipeline/source/src/JApi/project.json -c Release
-          JAPI_VERSION="$(/pipeline/source/src/JApi/project.json | jq --raw-output '.version')"
+          JAPI_VERSION="$(cat /pipeline/source/src/JApi/project.json | jq --raw-output '.version')"
           
 push:
   steps:
