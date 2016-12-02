@@ -33,19 +33,20 @@ namespace JApi
             string last = null,
             string prev = null,
             string next = null,
-            JLinkProperty[] links = null,
+            JLinkProperty[] additionalLinks = null,
             JResourceObject[] included = null) : base(
-                Content(
+                content(
                     data: data, 
                     meta: meta, 
-                    jsonapi: jsonapi, 
-                    self: self,
-                    related: related,
-                    first: first, 
-                    last: last,
-                    prev: prev,
-                    next: next,
-                    links: links, 
+                    jsonapi: jsonapi,
+                    links: links( 
+                        self: self,
+                        related: related,
+                        first: first, 
+                        last: last,
+                        prev: prev,
+                        next: next,
+                        additionalLinks: additionalLinks), 
                     included: included)
                 .ToArray()) {}
 
@@ -73,19 +74,20 @@ namespace JApi
             string last = null,
             string prev = null,
             string next = null,
-            JLinkProperty[] links = null,
+            JLinkProperty[] additionalLinks = null,
             JResourceObject[] included = null) : base(
-                Content(
+                content(
                     data: data, 
                     meta: meta, 
                     jsonapi: jsonapi, 
-                    self: self,
-                    related: related,
-                    first: first, 
-                    last: last,
-                    prev: prev,
-                    next: next,
-                    links: links, 
+                    links: links( 
+                        self: self,
+                        related: related,
+                        first: first, 
+                        last: last,
+                        prev: prev,
+                        next: next,
+                        additionalLinks: additionalLinks),  
                     included: included)
                 .ToArray()) {}
 
@@ -113,48 +115,68 @@ namespace JApi
             string last = null,
             string prev = null,
             string next = null,
-            JLinkProperty[] links = null) : base(
-                Content(
+            JLinkProperty[] additionalLinks = null) : base(
+                content(
                     data: data, 
                     meta: meta, 
                     jsonapi: jsonapi, 
-                    self: self,
-                    related: related,
-                    first: first, 
-                    last: last,
-                    prev: prev,
-                    next: next,
-                    links: links, 
+                    links: links( 
+                        self: self,
+                        related: related,
+                        first: first, 
+                        last: last,
+                        prev: prev,
+                        next: next,
+                        additionalLinks: additionalLinks),  
                     included: null)
                 .ToArray()) {}
-
-
-        /// <summary>
-        /// Builds the JObject content for the common parameters
-        /// </summary>
-        /// <param name="data">the document's "primary data" resource</param>
-        /// <param name="meta">a meta object that contains non-standard meta-information</param>
-        /// <param name="jsonapi">details about the api</param>
-        /// <param name="self">the link that generated the current response document</param>
-        /// <param name="related">a related resource link when the primary data represents a resource relationship</param>
-        /// <param name="first">the first page of data</param>
-        /// <param name="last">the last page of data</param>
-        /// <param name="prev">the prev page of data</param>
-        /// <param name="next">the next page of data</param>
-        /// <param name="links">additional custom links</param>
-        /// <param name="included">an array of resource objects that are related to the primary data and/or each other</param>
-        /// <returns>The JObject content</returns>
-        public static IEnumerable<object> Content(
-            object data, 
-            JObject meta,
-            JApiObject jsonapi,
+        private static IEnumerable<JLinkProperty> links(
             string self,
             string related,
             string first, 
             string last,
             string prev,
             string next,
-            JLinkProperty[] links,
+            params JLinkProperty[] additionalLinks) 
+        {   
+            if (!string.IsNullOrWhiteSpace(self))
+            {
+                yield return new JLinkProperty(nameof(self), self);
+            }
+            if (!string.IsNullOrWhiteSpace(related))
+            {
+                yield return new JLinkProperty(nameof(related), related);
+            }
+            if (!string.IsNullOrWhiteSpace(first))
+            {
+                yield return new JLinkProperty(nameof(first), first);
+            }
+            if (!string.IsNullOrWhiteSpace(last))
+            {
+                yield return new JLinkProperty(nameof(last), last);
+            }
+            if (!string.IsNullOrWhiteSpace(prev))
+            {
+                yield return new JLinkProperty(nameof(prev), prev);
+            }
+            if (!string.IsNullOrWhiteSpace(next))
+            {
+                yield return new JLinkProperty(nameof(next), next);
+            }
+            if (additionalLinks != null)
+            {
+                foreach (var link in additionalLinks)
+                {
+                    yield return link;
+                }
+            }
+        }
+
+        private static IEnumerable<object> content(
+            object data, 
+            JObject meta,
+            JApiObject jsonapi,
+            IEnumerable<JLinkProperty> links,
             JResourceObject[] included) 
         {
             yield return new JProperty(nameof(data), data);
@@ -166,21 +188,9 @@ namespace JApi
             {
                 yield return new JProperty(nameof(jsonapi), jsonapi);
             }
-            
-            links = JLinkProperty
-                .Concat(
-                    self: self,
-                    related: related,
-                    first: first, 
-                    last: last,
-                    prev: prev,
-                    next: next,
-                    links: links)
-                .ToArray();
-
-            if (links.Any())
+            if (links != null && links.Any())
             {
-                yield return new JProperty(nameof(links), new JObject(links));
+                yield return new JProperty(nameof(links), new JLinksObject(links.ToArray()));
             }
             if (included != null)
             {

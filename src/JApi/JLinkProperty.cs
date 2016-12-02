@@ -5,21 +5,44 @@ using System.Collections.Generic;
 namespace JApi
 {
     /// <summary>
-    /// Represents a single link with optional metadata
+    /// Each member of a links object is a "link"
     /// </summary>
     public class JLinkProperty : JProperty
     {
         public JLinkProperty (string name, string href, JObject meta = null) : base(
             name: name, 
-            content: ToContent(href: href, meta: meta))
+            content: content(href: href, meta: meta))
         {
         }
 
-        public static object ToContent(string href, JObject meta = null)
+        internal JLinkProperty (string name, object content) : base(
+            name: name, 
+            content: content)
+        {
+        }
+
+        private static object content(string href, JObject meta = null)
         {
             if (href == null)
             {
                 throw new ArgumentNullException(nameof(href));
+            }
+            return ContentOrDefault(
+                    href: href, 
+                    meta: meta);
+        }
+
+        /// <summary>
+        /// Builds the Link's content
+        /// </summary>
+        /// <param name="href"></param>
+        /// <param name="meta"></param>
+        /// <returns></returns>
+        public static object ContentOrDefault(string href, JObject meta = null)
+        {
+            if (href == null)
+            {
+                return null;
             }
             if (meta == null)
             {
