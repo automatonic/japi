@@ -104,7 +104,7 @@ namespace JApi
         /// <param name="links"></param>
         /// <param name="meta"></param>
         public JDocumentObject (
-            JError[] data, 
+            JErrorObject[] data, 
             JObject meta = null,
             JApiObject jsonapi = null,
             string self = null,
