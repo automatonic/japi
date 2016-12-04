@@ -7,7 +7,8 @@
         {
             "taskName": "build",
             "args": [
-                "src/JsonApi"
+                "src/Japi",
+                "test/Japi.Should"
             ],
             "isBuildCommand": true,
             "problemMatcher": "$msCompile"

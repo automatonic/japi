@@ -8,10 +8,10 @@ namespace JApi
     /// http://jsonapi.org/format/#document-top-level
     /// MAY and MUST rules for all JDocumentObjects instances
     /// </summary>
-    public class JDocumentObjects
+    public class JDocumentObjectMay
     {
         [Fact]
-        public void MayRepresentAnArrayOfResourceIdentifierObjects()
+        public void RepresentAnArrayOfResourceIdentifierObjects()
         {
             var instance = new JDocumentObject(new[] {
                 new JResourceObject("dwarf", "gimly"),
@@ -22,7 +22,7 @@ namespace JApi
         }
 
         [Fact]
-        public void MayRepresentAnArrayOfResourceObjects()
+        public void RepresentAnArrayOfResourceObjects()
         {
             var instance = new JDocumentObject(new[] {
                 new JResourceObject("dwarf", "gimly"),
@@ -33,7 +33,7 @@ namespace JApi
         }
 
         [Fact]
-        public void MayRepresentAnEmptyArrayOfResourceObjects()
+        public void RepresentAnEmptyArrayOfResourceObjects()
         {
             var instance = new JDocumentObject(new JResourceObject[] { });
             var result = instance.ToString(Newtonsoft.Json.Formatting.None);
@@ -41,7 +41,7 @@ namespace JApi
         }
 
         [Fact]
-        public void MayRepresentASingleNullResourceObject()
+        public void RepresentASingleNullResourceObject()
         {
             var instance = new JDocumentObject(data: default(JResourceObject));
             var result = instance.ToString(Newtonsoft.Json.Formatting.None);
@@ -49,7 +49,7 @@ namespace JApi
         }
 
         [Fact]
-        public void MayRepresentASingleResourceIdentifierObject()
+        public void RepresentASingleResourceIdentifierObject()
         {
             var instance = new JDocumentObject(new JResourceObject("dwarf", "gimly"));
             var result = instance.ToString(Newtonsoft.Json.Formatting.None);
@@ -57,7 +57,7 @@ namespace JApi
         }
 
         [Fact]
-        public void MayRepresentASingleResourceObject()
+        public void RepresentASingleResourceObject()
         {
             var instance = new JDocumentObject(new JResourceObject("dwarf", "gimly"));
             var result = instance.ToString(Newtonsoft.Json.Formatting.None);
