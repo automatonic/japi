@@ -1,4 +1,4 @@
-box: automatonic/dotnet
+box: microsoft/dotnet
 build:
   steps:
     - script:
