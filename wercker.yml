@@ -8,7 +8,7 @@ build:
     - script:
         name: dotnet test 
         code: |
-          dotnet test /pipeline/source/test/JApi.Should/project.json -c Release
+          dotnet test /pipeline/source/test/JApi.Should -c Release
     - script:
         name: dotnet pack 
         code: |
