@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+
+  <PropertyGroup>
+    <Description>JSON.NET extensions for supporting JSON API (http://jsonapi.org/)</Description>
+    <AssemblyTitle>JApi</AssemblyTitle>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <VersionPrefix>0.1.1</VersionPrefix>
+    <Authors>Elliott B. Edwards (automatonic)</Authors>
+    <TargetFramework>netstandard1.0</TargetFramework>
+    <DebugType>portable</DebugType>
+    <AssemblyName>JApi</AssemblyName>
+    <PackageTags>json;json-api;rest</PackageTags>
+    <PackageIconUrl>http://www.gravatar.com/avatar/772743edd14cb0bd749c2a08bccad4c5.png?s=256</PackageIconUrl>
+    <PackageProjectUrl>https://www.github.com/automatonic/japi</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.github.com/automatonic/japi/master/LICENSE.md</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>git://github.com/automatonic/japi</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="**\*.cs" />
+    <EmbeddedResource Include="**\*.resx" />
+    <EmbeddedResource Include="compiler\resources\**\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>9.0.1</Version>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.0' ">
+    <PackageReference Include="NETStandard.Library">
+      <Version>1.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
+  </PropertyGroup>
+
+</Project>
