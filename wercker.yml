@@ -1,4 +1,4 @@
-box: microsoft/dotnet
+box: microsoft/dotnet:1-sdk-msbuild
 build:
   steps:
     - script:
